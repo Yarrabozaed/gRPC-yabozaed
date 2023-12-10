@@ -1,0 +1,142 @@
+syntax = "proto3";
+
+package mockReddit;
+
+
+/*
+    python3 -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. proto/Reddit.proto
+*/
+service MockReddit{
+    // Create a post
+    rpc CreatePost (Post) returns (Post);
+
+    // Upvote or downvote a post
+    rpc VotePost (VoteRequest) returns (VoteResponse);
+
+    // Upvote or downvote a comment
+    rpc VoteComment (VoteRequest) returns (VoteResponse);
+
+    // Retrieve Post content
+    rpc RetrievePost (PostRequest) returns (Post);
+
+    // Create a Comment
+    rpc CreateComment (Comment) returns (Comment);
+
+    /*
+        Retrieving a list of N most upvoted comments under a post, where N is a parameter to the call. The
+        returned result should indicate whether there are replies under those comments.
+    */
+    rpc GetTopComments (TopCommentsRequest) returns (TopCommentsResponse);
+
+    /*
+        Expand a comment branch. This allows to open most N most upvoted comments under a given
+        comment, alongside with N most upvoted comments under those comments. Essentially, a tree of
+        depth 2.
+    */
+    rpc ExpandCommentBranch (ExpandCommentBranchRequest) returns (ExpandCommentBranchResponse);
+}
+
+// ExpandCommentBranch response
+message ExpandCommentBranchResponse {
+    repeated Comment comments = 1;
+}
+
+// ExpandCommentBranch request
+message ExpandCommentBranchRequest {
+    string commentID = 1;
+    int32 n = 2;
+}
+
+// GetTopComments request
+message TopCommentsRequest{
+    string postID = 1;
+    int32 n = 2;
+}
+
+// GetTopComments response
+message TopCommentsResponse{
+    repeated Comment comments = 1;
+}
+
+// RetrievePost request
+message PostRequest{
+    string id = 1;
+}
+
+// request proto for voting on posts and comments
+message VoteRequest{
+    string id = 1;
+    // if upvote (+1) send true, if downvote (-1) send false
+    bool upvote = 2;
+}
+
+message VoteResponse{
+    string id = 1;
+    int32 score = 2;
+}
+
+// hidden is the same thing as deleted
+enum PostState {
+    POST_NORMAL = 0;
+    POST_LOCKED = 1;
+    POST_HIDDEN = 2;
+}
+
+// hidden is the same thing as deleted
+enum CommentState {
+    COMMENT_NORMAL = 0;
+    COMMENT_HIDDEN = 1; 
+}
+
+// User. All you need is actually a human readable user ID
+message User {
+  string id = 1;
+}
+
+/*
+    Post. Posts have a 
+            title, 
+            some text, 
+            and at most one of: a video or an image URL.
+        The author is optional in this parallel universe, for some reason.
+        Posts have a score, which can be negative.
+        Posts have a state: normal, locked, or hidden (another word for deleted).
+        Posts have a publication date.
+*/
+message Post{
+    User author = 1;
+    int32 score = 2;
+    PostState state = 3;
+    string publication_date = 4;
+
+    string title = 5;
+    string text = 6;
+    string media_url = 7;
+
+    //added an ID to make requests for specific posts
+    string id = 8;
+}
+
+/*
+    Comment. Comments are 
+            made by users, 
+            under a post or another comment.
+        Comments do have an author.
+        Just like Posts, comments have a score.
+        Comments can be normal or hidden, but not locked.
+        * Note that reusing the post status ENUM will be considered a mistake; these are two
+            separate entities that can evolve in different directions.
+        Comments have a publication date.
+*/
+message Comment{
+    User author = 1;
+    int32 score = 2;
+    CommentState state = 3;
+    string publication_date = 4;
+
+    Comment associated_comment = 5;
+    Post associated_post = 6;
+
+    //added an ID to make requests for specific comments
+    string id = 7;
+}
