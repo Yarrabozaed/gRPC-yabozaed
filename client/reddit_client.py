@@ -13,18 +13,22 @@ from proto import Reddit_pb2, Reddit_pb2_grpc
 
 
 class MockRedditClient:
-    
     def __init__(self, host='localhost', port=50051):
         self.channel = grpc.insecure_channel(f'{host}:{port}')
         self.stub = Reddit_pb2_grpc.MockRedditStub(self.channel) 
     
+class MockRedditResolvers:
+    
+    def __init__(self, stub):
+        self.stub = stub
+    
     # handler 1 - create a post with user input
-    def create_post(self):
+    def create_post(self, userID="U001", post_title="Sample title", post_text = "This is a sample post text.", url = "http://fake.com"):
         post = Reddit_pb2.Post(
-            author=Reddit_pb2.User(id="U001"), 
-            title="Sample Title",
-            text="This is a sample post text.",
-            media_url="http://example.com/sample.jpg"
+            author = Reddit_pb2.User(id=userID), 
+            title = post_title,
+            text = post_text,
+            media_url= url
         )
         
         response = self.stub.CreatePost(post)
@@ -36,10 +40,10 @@ class MockRedditClient:
 
 
     # handler 2 - upvote/downvote a post
-    def vote_post(self):
+    def vote_post(self, req_id = "P001", upvote_tf=True):
         vote_request = Reddit_pb2.VoteRequest(
-            id="P001",
-            upvote=True
+            id= req_id,
+            upvote=upvote_tf
         )
         response = self.stub.VotePost(vote_request)
         
@@ -50,10 +54,10 @@ class MockRedditClient:
 
         
     # handler 3 - upvote/downvote a comment
-    def vote_comment(self):
+    def vote_comment(self, req_id = "C001", upvote_tf = False):
         vote_request = Reddit_pb2.VoteRequest(
-            id="C001",
-            upvote=False
+            id= req_id,
+            upvote= upvote_tf
         )
         response = self.stub.VoteComment(vote_request)
         
@@ -63,9 +67,9 @@ class MockRedditClient:
             print(f"Current score for comment {response.id}: {response.score}")
         
     # handler 4 - upvote/downvote a comment
-    def retrieve_post(self):
+    def retrieve_post(self, post_id="P005"):
         post_request = Reddit_pb2.PostRequest(
-            id = "P005"
+            id = post_id
         )
         
         response = self.stub.RetrievePost(post_request)
@@ -83,13 +87,12 @@ class MockRedditClient:
             print(f"        Media URL: {response.media_url}")
             
     # handler 5 - create a new comment with user input
-    def create_comment(self):
+    def create_comment(self, author_id="U001", input_content="Is this thing on?", comment_id = "C009", associated_post_id = None):
         comment = Reddit_pb2.Comment(
-            author=Reddit_pb2.User(id="U001"), 
-            content = "Is this thing on?",
-            associated_comment = Reddit_pb2.Comment(id="C009"),
-            associated_post = None
-            
+            author=Reddit_pb2.User(id=author_id), 
+            content = input_content,
+            associated_comment = Reddit_pb2.Comment(id= comment_id),
+            associated_post = associated_post_id
         )
         
         response = self.stub.CreateComment(comment)
@@ -100,10 +103,10 @@ class MockRedditClient:
             print(f"Comment created: {response.id}")
 
     # handler 6 - get top comments
-    def get_top_comments(self):
+    def get_top_comments(self, id="P001", inp_n = 1):
         top_comment_request = Reddit_pb2.TopCommentsRequest(
-            postID = "P001",
-            n = 1
+            postID = id,
+            n = inp_n
         )
         
         response = self.stub.GetTopComments(top_comment_request)
@@ -115,10 +118,10 @@ class MockRedditClient:
         print(f"Are there more comments? {response.hasResponses}")
 
 
-    def expand_comment_branch(self):
+    def expand_comment_branch(self, id = "C001", inp_n = 3):
         exoand_comment_request = Reddit_pb2.ExpandCommentBranchRequest(
-            commentID = "C001",
-            n = 3
+            commentID = id,
+            n = inp_n
         )
         
         response = self.stub.ExpandCommentBranch(exoand_comment_request)
@@ -139,23 +142,25 @@ if __name__ == '__main__':
     
     client = MockRedditClient(host='localhost', port=args.port)
     
+    resolver = MockRedditResolvers(client.stub)
+    
     print("----------create_post()---------")
-    client.create_post()
+    resolver.create_post()
             
     print("----------vote_post()---------")
-    client.vote_post()
+    resolver.vote_post()
             
     print("----------vote_comment()---------")
-    client.vote_comment()
+    resolver.vote_comment()
             
     print("----------retrieve_post()---------")
-    client.retrieve_post()
+    resolver.retrieve_post()
             
     print("----------create_comment()---------")
-    client.create_comment()
+    resolver.create_comment()
             
     print("----------get_top_comments()---------")
-    client.get_top_comments()
+    resolver.get_top_comments()
             
     print("----------expand_comment_branch()---------")
-    client.expand_comment_branch()
+    resolver.expand_comment_branch()

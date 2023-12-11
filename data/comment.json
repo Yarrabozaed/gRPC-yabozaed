@@ -3,7 +3,7 @@
         "author": {
             "id": "U001"
         },
-        "score": -48,
+        "score": -49,
         "state": "NORMAL",
         "publication_date": "2021-09-06T10:00:00Z",
         "associated_comment": null,
@@ -698,6 +698,18 @@
         "publication_date": "2023-12-11T07:22:39Z",
         "content": "Is this thing on?",
         "id": "C5788",
+        "associated_post": null,
+        "associated_comment": "C009"
+    },
+    {
+        "author": {
+            "id": "U001"
+        },
+        "score": 0,
+        "state": "NORMAL",
+        "publication_date": "2023-12-11T16:50:50Z",
+        "content": "Is this thing on?",
+        "id": "C5292",
         "associated_post": null,
         "associated_comment": "C009"
     }

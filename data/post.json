@@ -3,7 +3,7 @@
         "author": {
             "id": "U001"
         },
-        "score": 67,
+        "score": 68,
         "state": "NORMAL",
         "publication_date": "2021-09-01T12:00:00Z",
         "title": "Discovering the Unseen",
@@ -778,5 +778,17 @@
         "text": "This is a sample post text.",
         "media_url": "http://example.com/sample.jpg",
         "id": "P4475"
+    },
+    {
+        "author": {
+            "id": "U001"
+        },
+        "score": 0,
+        "state": "NORMAL",
+        "publication_date": "2023-12-11T16:50:50Z",
+        "title": "Sample title",
+        "text": "This is a sample post text.",
+        "media_url": "http://fake.com",
+        "id": "P2038"
     }
 ]
