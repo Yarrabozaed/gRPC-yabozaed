@@ -35,8 +35,11 @@ class MockRedditResolvers:
         
         if response.id == "0000":
             print(f"Failed to process request")
+            return None
         else:
             print(f"Post created: {response.id}")
+        
+        return response
 
 
     # handler 2 - upvote/downvote a post
@@ -49,9 +52,11 @@ class MockRedditResolvers:
         
         if response.id == "0000":
             print(f"Failed to process request")
+            return None
         else:
             print(f"Current score for post {response.id}: {response.score}")
 
+        return response
         
     # handler 3 - upvote/downvote a comment
     def vote_comment(self, req_id = "C001", upvote_tf = False):
@@ -63,9 +68,12 @@ class MockRedditResolvers:
         
         if response.id == "0000":
             print(f"Failed to process request")
+            return None
         else:
             print(f"Current score for comment {response.id}: {response.score}")
         
+        return response
+    
     # handler 4 - upvote/downvote a comment
     def retrieve_post(self, post_id="P005"):
         post_request = Reddit_pb2.PostRequest(
@@ -76,6 +84,7 @@ class MockRedditResolvers:
         
         if response.id == "0000":
             print(f"Failed to process request")
+            return None
         else:
             print(f"Here's the requested post {response.id}: ")
             print(f"           Author: {response.author}")
@@ -85,6 +94,8 @@ class MockRedditResolvers:
             print(f"            Title: {response.title}")
             print(f"             Text: {response.text}")
             print(f"        Media URL: {response.media_url}")
+        
+        return response
             
     # handler 5 - create a new comment with user input
     def create_comment(self, author_id="U001", input_content="Is this thing on?", comment_id = "C009", associated_post_id = None):
@@ -99,8 +110,11 @@ class MockRedditResolvers:
         
         if response.id == "0000":
             print(f"Failed to process request")
+            return None
         else:
             print(f"Comment created: {response.id}")
+
+        return response
 
     # handler 6 - get top comments
     def get_top_comments(self, id="P001", inp_n = 1):
@@ -116,17 +130,21 @@ class MockRedditResolvers:
         print()
         
         print(f"Are there more comments? {response.hasResponses}")
+        
+        return response
 
 
     def expand_comment_branch(self, id = "C001", inp_n = 3):
-        exoand_comment_request = Reddit_pb2.ExpandCommentBranchRequest(
+        expand_comment_request = Reddit_pb2.ExpandCommentBranchRequest(
             commentID = id,
             n = inp_n
         )
         
-        response = self.stub.ExpandCommentBranch(exoand_comment_request)
+        response = self.stub.ExpandCommentBranch(expand_comment_request)
         
         print(response.comments)
+        
+        return response
 
     def close(self):
         self.channel.close()
