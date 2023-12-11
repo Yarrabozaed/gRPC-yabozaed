@@ -105,6 +105,18 @@ def get_top_comments(stub):
     
     print(f"Are there more comments? {response.hasResponses}")
 
+
+def expand_comment_branch(stub):
+    exoand_comment_request = Reddit_pb2.ExpandCommentBranchRequest(
+        commentID = "C001",
+        n = 3
+    )
+    
+    response = stub.ExpandCommentBranch(exoand_comment_request)
+    
+    print(response.comments)
+
+
 def run():
     with grpc.insecure_channel('localhost:50051') as channel:
         stub = Reddit_pb2_grpc.MockRedditStub(channel=channel)
@@ -126,6 +138,11 @@ def run():
         
         print("----------get_top_comments()---------")
         get_top_comments(stub)
+        
+        print("----------expand_comment_branch()---------")
+        expand_comment_branch(stub)
+        
+        
 
 if __name__ == '__main__':
     run()

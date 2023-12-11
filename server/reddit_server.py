@@ -310,8 +310,106 @@ class MockRedditService(Reddit_pb2_grpc.MockRedditServicer):
 
         return response
               
-    
+    def ExpandCommentBranch(self, request, context):
+        
+        root = {}
+        comment_collection = []
+        
+        for comment in comments:
+            if comment['id'] == request.commentID:
+                root = comment
+        
+        if not root:
+            return Reddit_pb2.TopCommentsResponse(
+                comments = comment_collection,
+                hasResponses = False
+            )
+            
+        id_of_root = root['id']
+        
+        #comment_collection.append(root)
+        
+        for comment in comments:
+            if isinstance(comment['associated_comment'], dict) and comment['associated_comment'] is not None:
+                if comment['associated_comment']['id'] == request.commentID:
+                    print(comment)
+                    comment_collection.append(comment)
 
+        sorted_comments = sorted(comment_collection, key=lambda x: x['score'], reverse=True)
+
+        response_list = []
+        
+        i = 0
+        while i < len(sorted_comments):
+            response_list.append(sorted_comments[i])
+            
+            i += 1
+            if i == request.n:
+                break
+            
+        sub_collection = []
+        
+        for comment in sorted_comments:
+            for c in comments:
+                if c['associated_comment'] is not None:
+                    if isinstance(c['associated_comment'], dict) and c['associated_comment']['id'] == comment['id']:
+                        sub_collection.append(c)
+            
+            sorted_sub_collection = sorted(sub_collection, key=lambda x: x['score'], reverse=True)
+
+            sub = []
+            
+            i = 0
+            while i < len(sorted_sub_collection):
+                sub.append(sorted_sub_collection[i])
+                    
+                i += 1
+                
+                if i == request.n:
+                    break
+            
+            response_list.extend(sub)
+            
+            sub_collection = []
+            sorted_sub_collection = []
+        
+        comments_response = []
+        
+        # format the response
+        for comment in response_list:
+            
+            c = Reddit_pb2.Comment(
+                author = Reddit_pb2.User(id=comment['author']['id']),
+                score = comment['score'],
+                state = "COMMENT_" + comment['state'],
+                publication_date = comment['publication_date'],
+                content = comment['content'],
+                id = comment['id']
+            )
+
+            if comment['associated_comment'] is not None:
+                c.associated_comment.CopyFrom(
+                    Reddit_pb2.Comment(
+                        id= comment['associated_comment']['id']
+                    )
+                )
+                
+            
+            if comment['associated_post'] is not None:
+                c.associated_post.CopyFrom(
+                    Reddit_pb2.Post(
+                        id= comment['associated_post']['id']
+                    )
+                )
+            
+            comments_response.append(c)
+            
+        response = Reddit_pb2.ExpandCommentBranchResponse(
+            comments = comments_response
+        )
+
+        return response
+    
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     Reddit_pb2_grpc.add_MockRedditServicer_to_server(
