@@ -6,6 +6,7 @@ import sys
 import json
 import time
 import random
+import argparse
 
 # Generated with an LLM -> needed to access files in proto dir
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -325,14 +326,10 @@ class MockRedditService(Reddit_pb2_grpc.MockRedditServicer):
                 hasResponses = False
             )
             
-        id_of_root = root['id']
-        
-        #comment_collection.append(root)
-        
+                
         for comment in comments:
             if isinstance(comment['associated_comment'], dict) and comment['associated_comment'] is not None:
                 if comment['associated_comment']['id'] == request.commentID:
-                    print(comment)
                     comment_collection.append(comment)
 
         sorted_comments = sorted(comment_collection, key=lambda x: x['score'], reverse=True)
@@ -410,15 +407,15 @@ class MockRedditService(Reddit_pb2_grpc.MockRedditServicer):
 
         return response
     
-def serve():
+def serve(port=50051):
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     Reddit_pb2_grpc.add_MockRedditServicer_to_server(
         MockRedditService(), 
         server
     )
-    server.add_insecure_port("[::]:50051")
+    server.add_insecure_port(f"[::]:{port}")
     server.start()
-    print("Server started on port 50051")
+    print(f"Server started on port {port}")
     try:
         server.wait_for_termination()
     except KeyboardInterrupt:
@@ -427,6 +424,17 @@ def serve():
         print("Server has been stopped")
 
 if __name__ == "__main__":
+    
+    # The server script should be configurable
+    #   with command line arguments, and should come with reasonable defaults for required parameters.
+    parser = argparse.ArgumentParser(description='MockReddit gRPC server')
+    
+    parser.add_argument('--port', type=int, default=50051, help='Port to listen on (default: 50051)')
+    
+    args = parser.parse_args()
+
     logging.basicConfig(level=logging.INFO)
-    print("Starting the server...")
-    serve()
+    
+    print(f"Starting the server on port {args.port}...")
+    
+    serve(port=args.port)

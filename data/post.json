@@ -3,7 +3,7 @@
         "author": {
             "id": "U001"
         },
-        "score": 63,
+        "score": 67,
         "state": "NORMAL",
         "publication_date": "2021-09-01T12:00:00Z",
         "title": "Discovering the Unseen",
@@ -730,5 +730,53 @@
         "text": "This is a sample post text.",
         "media_url": "http://example.com/sample.jpg",
         "id": "P5139"
+    },
+    {
+        "author": {
+            "id": "U001"
+        },
+        "score": 0,
+        "state": "NORMAL",
+        "publication_date": "2023-12-11T06:57:46Z",
+        "title": "Sample Title",
+        "text": "This is a sample post text.",
+        "media_url": "http://example.com/sample.jpg",
+        "id": "P6144"
+    },
+    {
+        "author": {
+            "id": "U001"
+        },
+        "score": 0,
+        "state": "NORMAL",
+        "publication_date": "2023-12-11T07:20:59Z",
+        "title": "Sample Title",
+        "text": "This is a sample post text.",
+        "media_url": "http://example.com/sample.jpg",
+        "id": "P7192"
+    },
+    {
+        "author": {
+            "id": "U001"
+        },
+        "score": 0,
+        "state": "NORMAL",
+        "publication_date": "2023-12-11T07:22:27Z",
+        "title": "Sample Title",
+        "text": "This is a sample post text.",
+        "media_url": "http://example.com/sample.jpg",
+        "id": "P3917"
+    },
+    {
+        "author": {
+            "id": "U001"
+        },
+        "score": 0,
+        "state": "NORMAL",
+        "publication_date": "2023-12-11T07:22:39Z",
+        "title": "Sample Title",
+        "text": "This is a sample post text.",
+        "media_url": "http://example.com/sample.jpg",
+        "id": "P4475"
     }
 ]
