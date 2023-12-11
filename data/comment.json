@@ -1,0 +1,92 @@
+[
+    {
+        "author": {"id": "U001"},
+        "score": 5,
+        "state": "NORMAL",
+        "publication_date": "2021-09-06T10:00:00Z",
+        "associated_comment": null,
+        "associated_post": {"id": "P001"},
+        "id": "C001"
+    },
+    {
+        "author": {"id": "U002"},
+        "score": 3,
+        "state": "NORMAL",
+        "publication_date": "2021-09-06T10:05:00Z",
+        "associated_comment": {"id": "C001"},
+        "associated_post": null,
+        "id": "C002"
+    },
+    {
+        "author": {"id": "U003"},
+        "score": 2,
+        "state": "NORMAL",
+        "publication_date": "2021-09-06T10:10:00Z",
+        "associated_comment": null,
+        "associated_post": {"id": "P002"},
+        "id": "C003"
+    },
+    {
+        "author": {"id": "U004"},
+        "score": 4,
+        "state": "NORMAL",
+        "publication_date": "2021-09-06T10:15:00Z",
+        "associated_comment": {"id": "C003"},
+        "associated_post": null,
+        "id": "C004"
+    },
+    {
+        "author": {"id": "U005"},
+        "score": 7,
+        "state": "NORMAL",
+        "publication_date": "2021-09-06T10:20:00Z",
+        "associated_comment": null,
+        "associated_post": {"id": "P003"},
+        "id": "C005"
+    },
+    {
+        "author": {"id": "U002"},
+        "score": -1,
+        "state": "HIDDEN",
+        "publication_date": "2021-09-06T11:00:00Z",
+        "associated_comment": null,
+        "associated_post": {"id": "P004"},
+        "id": "C006"
+    },
+    {
+        "author": {"id": "U003"},
+        "score": 1,
+        "state": "HIDDEN",
+        "publication_date": "2021-09-06T11:05:00Z",
+        "associated_comment": {"id": "C006"},
+        "associated_post": null,
+        "id": "C007"
+    },
+    {
+        "author": {"id": "U004"},
+        "score": -2,
+        "state": "HIDDEN",
+        "publication_date": "2021-09-06T11:10:00Z",
+        "associated_comment": null,
+        "associated_post": {"id": "P005"},
+        "id": "C008"
+    },
+    {
+        "author": {"id": "U005"},
+        "score": 0,
+        "state": "HIDDEN",
+        "publication_date": "2021-09-06T11:15:00Z",
+        "associated_comment": {"id": "C008"},
+        "associated_post": null,
+        "id": "C009"
+    },
+    {
+        "author": {"id": "U001"},
+        "score": -3,
+        "state": "HIDDEN",
+        "publication_date": "2021-09-06T11:20:00Z",
+        "associated_comment": null,
+        "associated_post": {"id": "P001"},
+        "id": "C010"
+    }
+]

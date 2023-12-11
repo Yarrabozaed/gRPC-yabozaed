@@ -1,0 +1,146 @@
+[
+    {
+        "author": {
+            "id": "U001"
+        },
+        "score": 14,
+        "state": "NORMAL",
+        "publication_date": "2021-09-01T12:00:00Z",
+        "title": "Discovering the Unseen",
+        "text": "Exploration of hidden natural wonders around the world.",
+        "media_url": "http://example.com/image1.jpg",
+        "id": "P001"
+    },
+    {
+        "author": {
+            "id": "U002"
+        },
+        "score": 45,
+        "state": "LOCKED",
+        "publication_date": "2021-09-02T15:30:00Z",
+        "title": "The Future of Technology",
+        "text": "Predicting the next big thing in tech innovation.",
+        "media_url": "http://example.com/video1.mp4",
+        "id": "P002"
+    },
+    {
+        "author": {
+            "id": "U003"
+        },
+        "score": -3,
+        "state": "HIDDEN",
+        "publication_date": "2021-09-03T18:45:00Z",
+        "title": "Gardening Tips",
+        "text": "How to ensure your plants thrive in all seasons.",
+        "media_url": "http://example.com/image2.jpg",
+        "id": "P003"
+    },
+    {
+        "author": {
+            "id": "U004"
+        },
+        "score": 30,
+        "state": "NORMAL",
+        "publication_date": "2021-09-04T20:00:00Z",
+        "title": "Healthy Eating",
+        "text": "Quick and delicious recipes for a healthy lifestyle.",
+        "media_url": "http://example.com/image3.jpg",
+        "id": "P004"
+    },
+    {
+        "author": {
+            "id": "U005"
+        },
+        "score": 75,
+        "state": "NORMAL",
+        "publication_date": "2021-09-05T22:15:00Z",
+        "title": "Space Exploration",
+        "text": "Humanity's quest to explore the final frontier.",
+        "media_url": "http://example.com/video2.mp4",
+        "id": "P005"
+    },
+    {
+        "author": {
+            "id": "U001"
+        },
+        "score": 0,
+        "state": "NORMAL",
+        "publication_date": "2023-12-11T04:49:10Z",
+        "title": "Sample Title",
+        "text": "This is a sample post text.",
+        "media_url": "http://example.com/sample.jpg",
+        "id": "P8130"
+    },
+    {
+        "author": {
+            "id": "U001"
+        },
+        "score": 0,
+        "state": "NORMAL",
+        "publication_date": "2023-12-11T04:50:25Z",
+        "title": "Sample Title",
+        "text": "This is a sample post text.",
+        "media_url": "http://example.com/sample.jpg",
+        "id": "P2012"
+    },
+    {
+        "author": {
+            "id": "U001"
+        },
+        "score": 0,
+        "state": "NORMAL",
+        "publication_date": "2023-12-11T04:55:21Z",
+        "title": "Sample Title",
+        "text": "This is a sample post text.",
+        "media_url": "",
+        "id": "P9097"
+    },
+    {
+        "author": {
+            "id": "U001"
+        },
+        "score": 0,
+        "state": "NORMAL",
+        "publication_date": "2023-12-11T05:03:57Z",
+        "title": "Sample Title",
+        "text": "This is a sample post text.",
+        "media_url": "http://example.com/sample.jpg",
+        "id": "P4689"
+    },
+    {
+        "author": {
+            "id": "U001"
+        },
+        "score": 0,
+        "state": "NORMAL",
+        "publication_date": "2023-12-11T05:06:23Z",
+        "title": "Sample Title",
+        "text": "This is a sample post text.",
+        "media_url": "http://example.com/sample.jpg",
+        "id": "P4940"
+    },
+    {
+        "author": {
+            "id": "U001"
+        },
+        "score": 0,
+        "state": "NORMAL",
+        "publication_date": "2023-12-11T05:07:54Z",
+        "title": "Sample Title",
+        "text": "This is a sample post text.",
+        "media_url": "http://example.com/sample.jpg",
+        "id": "P2797"
+    },
+    {
+        "author": {
+            "id": "U001"
+        },
+        "score": 0,
+        "state": "NORMAL",
+        "publication_date": "2023-12-11T05:08:17Z",
+        "title": "Sample Title",
+        "text": "This is a sample post text.",
+        "media_url": "http://example.com/sample.jpg",
+        "id": "P6073"
+    }
+]
