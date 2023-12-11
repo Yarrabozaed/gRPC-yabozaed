@@ -56,6 +56,7 @@ message TopCommentsRequest{
 // GetTopComments response
 message TopCommentsResponse{
     repeated Comment comments = 1;
+    bool hasResponses = 2;
 }
 
 // RetrievePost request
@@ -137,6 +138,7 @@ message Comment{
     Comment associated_comment = 5;
     Post associated_post = 6;
 
+    string content = 7;
     //added an ID to make requests for specific comments
-    string id = 7;
+    string id = 8;
 }

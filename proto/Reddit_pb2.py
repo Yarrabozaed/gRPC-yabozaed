@@ -14,17 +14,17 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x12proto/Reddit.proto\x12\nmockReddit\"D\n\x1b\x45xpandCommentBranchResponse\x12%\n\x08\x63omments\x18\x01 \x03(\x0b\x32\x13.mockReddit.Comment\":\n\x1a\x45xpandCommentBranchRequest\x12\x11\n\tcommentID\x18\x01 \x01(\t\x12\t\n\x01n\x18\x02 \x01(\x05\"/\n\x12TopCommentsRequest\x12\x0e\n\x06postID\x18\x01 \x01(\t\x12\t\n\x01n\x18\x02 \x01(\x05\"<\n\x13TopCommentsResponse\x12%\n\x08\x63omments\x18\x01 \x03(\x0b\x32\x13.mockReddit.Comment\"\x19\n\x0bPostRequest\x12\n\n\x02id\x18\x01 \x01(\t\")\n\x0bVoteRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0e\n\x06upvote\x18\x02 \x01(\x08\")\n\x0cVoteResponse\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05score\x18\x02 \x01(\x05\"\x12\n\x04User\x12\n\n\x02id\x18\x01 \x01(\t\"\xc0\x01\n\x04Post\x12 \n\x06\x61uthor\x18\x01 \x01(\x0b\x32\x10.mockReddit.User\x12\r\n\x05score\x18\x02 \x01(\x05\x12$\n\x05state\x18\x03 \x01(\x0e\x32\x15.mockReddit.PostState\x12\x18\n\x10publication_date\x18\x04 \x01(\t\x12\r\n\x05title\x18\x05 \x01(\t\x12\x0c\n\x04text\x18\x06 \x01(\t\x12\x11\n\tmedia_url\x18\x07 \x01(\t\x12\n\n\x02id\x18\x08 \x01(\t\x12\x0b\n\x03\x65rr\x18\t \x01(\t\"\xe5\x01\n\x07\x43omment\x12 \n\x06\x61uthor\x18\x01 \x01(\x0b\x32\x10.mockReddit.User\x12\r\n\x05score\x18\x02 \x01(\x05\x12\'\n\x05state\x18\x03 \x01(\x0e\x32\x18.mockReddit.CommentState\x12\x18\n\x10publication_date\x18\x04 \x01(\t\x12/\n\x12\x61ssociated_comment\x18\x05 \x01(\x0b\x32\x13.mockReddit.Comment\x12)\n\x0f\x61ssociated_post\x18\x06 \x01(\x0b\x32\x10.mockReddit.Post\x12\n\n\x02id\x18\x07 \x01(\t*>\n\tPostState\x12\x0f\n\x0bPOST_NORMAL\x10\x00\x12\x0f\n\x0bPOST_LOCKED\x10\x01\x12\x0f\n\x0bPOST_HIDDEN\x10\x02*6\n\x0c\x43ommentState\x12\x12\n\x0e\x43OMMENT_NORMAL\x10\x00\x12\x12\n\x0e\x43OMMENT_HIDDEN\x10\x01\x32\xf0\x03\n\nMockReddit\x12\x30\n\nCreatePost\x12\x10.mockReddit.Post\x1a\x10.mockReddit.Post\x12=\n\x08VotePost\x12\x17.mockReddit.VoteRequest\x1a\x18.mockReddit.VoteResponse\x12@\n\x0bVoteComment\x12\x17.mockReddit.VoteRequest\x1a\x18.mockReddit.VoteResponse\x12\x39\n\x0cRetrievePost\x12\x17.mockReddit.PostRequest\x1a\x10.mockReddit.Post\x12\x39\n\rCreateComment\x12\x13.mockReddit.Comment\x1a\x13.mockReddit.Comment\x12Q\n\x0eGetTopComments\x12\x1e.mockReddit.TopCommentsRequest\x1a\x1f.mockReddit.TopCommentsResponse\x12\x66\n\x13\x45xpandCommentBranch\x12&.mockReddit.ExpandCommentBranchRequest\x1a\'.mockReddit.ExpandCommentBranchResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x12proto/Reddit.proto\x12\nmockReddit\"D\n\x1b\x45xpandCommentBranchResponse\x12%\n\x08\x63omments\x18\x01 \x03(\x0b\x32\x13.mockReddit.Comment\":\n\x1a\x45xpandCommentBranchRequest\x12\x11\n\tcommentID\x18\x01 \x01(\t\x12\t\n\x01n\x18\x02 \x01(\x05\"/\n\x12TopCommentsRequest\x12\x0e\n\x06postID\x18\x01 \x01(\t\x12\t\n\x01n\x18\x02 \x01(\x05\"R\n\x13TopCommentsResponse\x12%\n\x08\x63omments\x18\x01 \x03(\x0b\x32\x13.mockReddit.Comment\x12\x14\n\x0chasResponses\x18\x02 \x01(\x08\"\x19\n\x0bPostRequest\x12\n\n\x02id\x18\x01 \x01(\t\")\n\x0bVoteRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0e\n\x06upvote\x18\x02 \x01(\x08\")\n\x0cVoteResponse\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05score\x18\x02 \x01(\x05\"\x12\n\x04User\x12\n\n\x02id\x18\x01 \x01(\t\"\xb3\x01\n\x04Post\x12 \n\x06\x61uthor\x18\x01 \x01(\x0b\x32\x10.mockReddit.User\x12\r\n\x05score\x18\x02 \x01(\x05\x12$\n\x05state\x18\x03 \x01(\x0e\x32\x15.mockReddit.PostState\x12\x18\n\x10publication_date\x18\x04 \x01(\t\x12\r\n\x05title\x18\x05 \x01(\t\x12\x0c\n\x04text\x18\x06 \x01(\t\x12\x11\n\tmedia_url\x18\x07 \x01(\t\x12\n\n\x02id\x18\x08 \x01(\t\"\xf6\x01\n\x07\x43omment\x12 \n\x06\x61uthor\x18\x01 \x01(\x0b\x32\x10.mockReddit.User\x12\r\n\x05score\x18\x02 \x01(\x05\x12\'\n\x05state\x18\x03 \x01(\x0e\x32\x18.mockReddit.CommentState\x12\x18\n\x10publication_date\x18\x04 \x01(\t\x12/\n\x12\x61ssociated_comment\x18\x05 \x01(\x0b\x32\x13.mockReddit.Comment\x12)\n\x0f\x61ssociated_post\x18\x06 \x01(\x0b\x32\x10.mockReddit.Post\x12\x0f\n\x07\x63ontent\x18\x07 \x01(\t\x12\n\n\x02id\x18\x08 \x01(\t*>\n\tPostState\x12\x0f\n\x0bPOST_NORMAL\x10\x00\x12\x0f\n\x0bPOST_LOCKED\x10\x01\x12\x0f\n\x0bPOST_HIDDEN\x10\x02*6\n\x0c\x43ommentState\x12\x12\n\x0e\x43OMMENT_NORMAL\x10\x00\x12\x12\n\x0e\x43OMMENT_HIDDEN\x10\x01\x32\xf0\x03\n\nMockReddit\x12\x30\n\nCreatePost\x12\x10.mockReddit.Post\x1a\x10.mockReddit.Post\x12=\n\x08VotePost\x12\x17.mockReddit.VoteRequest\x1a\x18.mockReddit.VoteResponse\x12@\n\x0bVoteComment\x12\x17.mockReddit.VoteRequest\x1a\x18.mockReddit.VoteResponse\x12\x39\n\x0cRetrievePost\x12\x17.mockReddit.PostRequest\x1a\x10.mockReddit.Post\x12\x39\n\rCreateComment\x12\x13.mockReddit.Comment\x1a\x13.mockReddit.Comment\x12Q\n\x0eGetTopComments\x12\x1e.mockReddit.TopCommentsRequest\x1a\x1f.mockReddit.TopCommentsResponse\x12\x66\n\x13\x45xpandCommentBranch\x12&.mockReddit.ExpandCommentBranchRequest\x1a\'.mockReddit.ExpandCommentBranchResponseb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'proto.Reddit_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   DESCRIPTOR._options = None
-  _globals['_POSTSTATE']._serialized_start=835
-  _globals['_POSTSTATE']._serialized_end=897
-  _globals['_COMMENTSTATE']._serialized_start=899
-  _globals['_COMMENTSTATE']._serialized_end=953
+  _globals['_POSTSTATE']._serialized_start=861
+  _globals['_POSTSTATE']._serialized_end=923
+  _globals['_COMMENTSTATE']._serialized_start=925
+  _globals['_COMMENTSTATE']._serialized_end=979
   _globals['_EXPANDCOMMENTBRANCHRESPONSE']._serialized_start=34
   _globals['_EXPANDCOMMENTBRANCHRESPONSE']._serialized_end=102
   _globals['_EXPANDCOMMENTBRANCHREQUEST']._serialized_start=104
@@ -32,19 +32,19 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['_TOPCOMMENTSREQUEST']._serialized_start=164
   _globals['_TOPCOMMENTSREQUEST']._serialized_end=211
   _globals['_TOPCOMMENTSRESPONSE']._serialized_start=213
-  _globals['_TOPCOMMENTSRESPONSE']._serialized_end=273
-  _globals['_POSTREQUEST']._serialized_start=275
-  _globals['_POSTREQUEST']._serialized_end=300
-  _globals['_VOTEREQUEST']._serialized_start=302
-  _globals['_VOTEREQUEST']._serialized_end=343
-  _globals['_VOTERESPONSE']._serialized_start=345
-  _globals['_VOTERESPONSE']._serialized_end=386
-  _globals['_USER']._serialized_start=388
-  _globals['_USER']._serialized_end=406
-  _globals['_POST']._serialized_start=409
-  _globals['_POST']._serialized_end=601
-  _globals['_COMMENT']._serialized_start=604
-  _globals['_COMMENT']._serialized_end=833
-  _globals['_MOCKREDDIT']._serialized_start=956
-  _globals['_MOCKREDDIT']._serialized_end=1452
+  _globals['_TOPCOMMENTSRESPONSE']._serialized_end=295
+  _globals['_POSTREQUEST']._serialized_start=297
+  _globals['_POSTREQUEST']._serialized_end=322
+  _globals['_VOTEREQUEST']._serialized_start=324
+  _globals['_VOTEREQUEST']._serialized_end=365
+  _globals['_VOTERESPONSE']._serialized_start=367
+  _globals['_VOTERESPONSE']._serialized_end=408
+  _globals['_USER']._serialized_start=410
+  _globals['_USER']._serialized_end=428
+  _globals['_POST']._serialized_start=431
+  _globals['_POST']._serialized_end=610
+  _globals['_COMMENT']._serialized_start=613
+  _globals['_COMMENT']._serialized_end=859
+  _globals['_MOCKREDDIT']._serialized_start=982
+  _globals['_MOCKREDDIT']._serialized_end=1478
 # @@protoc_insertion_point(module_scope)
