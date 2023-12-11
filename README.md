@@ -17,11 +17,37 @@ This lab uses three json files to mock the data store - `comment.json`, `post.js
 
 # Data Model
 
+## Post:
+- `author`
+  - `id`: String 
+- `score`: Integer 
+- `state`: String
+- `publication_date`: DateTime in [ISO 8601 format](https://www.iso.org/iso-8601-date-and-time-format.html) 
+- `title`: String 
+- `text`: String 
+- `media_url`: URL String 
+- `id`: String 
 
+## Comment
+- `author`
+  - `id`: String 
+- `score`: Integer 
+- `state`: String
+- `publication_date`: DateTime in [ISO 8601 format](https://www.iso.org/iso-8601-date-and-time-format.html) 
+- `associated_comment`: (Null or `id`)
+    - `id`: String 
+- `associated_post` (Null or `id`)
+  - `id`: String 
+- `content`: String 
+- `id`: String 
+
+## User 
+- `id`: String 
 
 # Service Design 
 
-
+![image](https://github.com/Yarrabozaed/gRPC-yabozaed/blob/main/images/Protocols.jpg)
+![image](https://github.com/Yarrabozaed/gRPC-yabozaed/blob/main/images/Services.jpg)
 
 # Testing
 
